@@ -1,5 +1,5 @@
 import React, { Component, Fragment }  from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import LoadingBar from 'react-redux-loading'
@@ -9,6 +9,7 @@ import Questions from './Questions'
 import AddQuestion from './AddQuestion'
 import Leaderboard from './Leaderboard'
 import Question from './Question'
+import Logout from './Logout'
 
 class App extends Component {
   componentDidMount() {
@@ -24,14 +25,18 @@ class App extends Component {
             <Nav />
             {this.props.currentUser === null ?
               <div className="App">
-                <Route path='/' component={Login} />
+                <Switch>
+                  <Route path='/logout' component={Logout} />
+                  <Route path='/' component={Login} />
+                </Switch>
               </div>
               :
               <div className="App">
                 <Route path='/' exact component={Questions} />
                 <Route path='/add' component={AddQuestion} />
-                <Route path='leaderboard' component={Leaderboard} />
+                <Route path='/leaderboard' component={Leaderboard} />
                 <Route path='/questions/:question_id' component={Question} />
+                <Route path='/logout' component={Logout} />
               </div>
             }
           </div>
