@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 class Leaderboard extends Component {
   render() {
-    const { users, leaderboard } = this.props
+    const { leaderboard } = this.props
 
     console.log(leaderboard)
     return (
@@ -40,7 +40,6 @@ function mapStateToProps ({users}) {
   })
 
   return {
-    users,
     leaderboard: leaderboard.sort((a, b) => b['total'] - a['total'])
   }
 }
