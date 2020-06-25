@@ -1,6 +1,5 @@
 import { showLoading, hideLoading } from 'react-redux-loading'
 import { _saveQuestion, _saveQuestionAnswer, _getQuestions } from '../utils/_DATA'
-import { refreshUsers } from './users'
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const ADD_QUESTION = 'ADD_QUESTION'

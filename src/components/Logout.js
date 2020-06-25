@@ -16,8 +16,9 @@ class Logout extends Component {
   }
 }
 
-function mapStateToProps ({}) {
+function mapStateToProps ({currentUser}) {
   return {
+    currentUser
   }
 }
 
