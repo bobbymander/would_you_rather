@@ -15,9 +15,9 @@ class Leaderboard extends Component {
                 <ul>
                   <li key={`${entry.id}name`}>{entry['name']}</li>
                   <li key={`${entry.id}url`}>{entry['avatarURL']}</li>
-                  <li key={`${entry.id}asked`}>{entry['numAsked']}</li>
-                  <li key={`${entry.id}answered`}>{entry['numAnswered']}</li>
-                  <li key={`${entry.id}total`}>{entry['total']}</li>
+                  <li key={`${entry.id}asked`}>Asked: {entry['numAsked']}</li>
+                  <li key={`${entry.id}answered`}>Answered: {entry['numAnswered']}</li>
+                  <li key={`${entry.id}total`}>Total: {entry['total']}</li>
                 </ul>
               </li>
             </ul>
@@ -33,8 +33,8 @@ function mapStateToProps ({users}) {
     entry['id'] = user[1]['id']
     entry['name'] = user[1]['name']
     entry['avatarURL'] = user[1]['avatarURL']
-    entry['numAsked'] = Object.entries(user[1]['answers']).length
-    entry['numAnswered'] = user[1]['questions'].length
+    entry['numAsked'] = user[1]['questions'].length
+    entry['numAnswered'] = Object.entries(user[1]['answers']).length
     entry['total'] = entry['numAsked'] + entry['numAnswered']
     return entry
   })

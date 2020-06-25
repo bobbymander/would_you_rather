@@ -6,15 +6,16 @@ class Questions extends Component {
   render() {
     const { answered, unanswered } = this.props
 
+    console.log('home: ', answered, unanswered)
     return (
       <div>
         <h3 className='center'>Questions Unanswered</h3>
         {unanswered.map((entry) => (
-          <Question id={entry[1].id} />
+          <Question key={entry[1].id} id={entry[1].id} />
         ))}
         <h3 className='center'>Questions Answered</h3>
         {answered.map((entry) => (
-          <Question id={entry[1].id} />
+          <Question key={entry[1].id} id={entry[1].id} />
         ))}
       </div>
     )
@@ -31,8 +32,8 @@ function mapStateToProps ({questions, currentUser}) {
     question[1].optionTwo.votes.includes(currentUser)))
 
   return {
-    answered: answered.sort((a, b) => b.timestamp- a.timestamp),
-    unanswered: unanswered.sort((a, b) => b.timestamp- a.timestamp)
+    answered: answered.sort((a, b) => b[1].timestamp - a[1].timestamp),
+    unanswered: unanswered.sort((a, b) => b[1].timestamp - a[1].timestamp)
   }
 }
 
