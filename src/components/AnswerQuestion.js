@@ -22,6 +22,8 @@ class AnswerQuestion extends Component {
     const { selection } = this.state
     const { dispatch, currentUser, question_id } = this.props
 
+    console.log('submit: ', currentUser, question_id, selection)
+
     dispatch(handleQuestionAnswer(currentUser, question_id, selection))
 
     this.setState(() => ({
@@ -41,12 +43,12 @@ class AnswerQuestion extends Component {
       <form onSubmit={this.handleSubmit}>
         <h3>Would you rather?</h3>
         <label>
-          <input type='radio' id='one' name='options' value='one'
+          <input type='radio' id='one' name='options' value='optionOne'
             onChange={this.handleChange}/>
           {question.optionOne.text}
         </label>
         <label>
-          <input type='radio' id='two' name='options' value='two'
+          <input type='radio' id='two' name='options' value='optionTwo'
             onChange={this.handleChange}/>
           {question.optionTwo.text}
         </label>

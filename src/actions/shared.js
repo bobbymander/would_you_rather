@@ -31,11 +31,12 @@ export function handleInitialData () {
 
 
 function saveQuestionAnswer(authedUser, qid, answer) {
+  console.log('save: ', authedUser, qid, answer)
   return Promise.all([
     _saveQuestionAnswer(authedUser, qid, answer),
     _getUsers(),
     _getQuestions(),
-  ]).then(([users, questions]) => ({
+  ]).then(([dummy, users, questions]) => ({
     users,
     questions,
   }))
@@ -44,11 +45,12 @@ function saveQuestionAnswer(authedUser, qid, answer) {
 export function handleQuestionAnswer(authedUser, qid, answer) {
   return (dispatch) => {
     dispatch(showLoading())
-    return saveQuestionAnswer(authedUser, qid, answer)
+    return saveQuestionAnswer({authedUser, qid, answer})
       .then(({users, questions}) => {
         dispatch(receiveUsers(users))
         dispatch(receiveQuestions(questions))
         dispatch(hideLoading())
+        console.log('dispatch: ', users, questions)
       })
   }
 }
