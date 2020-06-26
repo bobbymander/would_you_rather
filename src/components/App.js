@@ -32,11 +32,14 @@ class App extends Component {
               </div>
               :
               <div className="App">
-                <Route path='/' exact component={Questions} />
-                <Route path='/add' component={AddQuestion} />
-                <Route path='/leaderboard' component={Leaderboard} />
-                <Route path='/questions/:question_id' component={QuestionDetail} />
-                <Route path='/logout' component={Logout} />
+                <Switch>
+                  <Route path='/' exact component={Questions} />
+                  <Route path='/add' component={AddQuestion} />
+                  <Route path='/leaderboard' component={Leaderboard} />
+                  <Route path='/questions/:question_id' component={QuestionDetail} />
+                  <Route path='/logout' component={Logout} />
+                  <Route component={() => (<div>404 Not found </div>)} />
+                </Switch>
               </div>
             }
           </div>

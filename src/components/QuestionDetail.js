@@ -34,8 +34,8 @@ class QuestionDetail extends Component {
   render() {
     const { users, currentUser, question } = this.props
 
-    if (question === null) {
-      return <p>This question doesn't exist</p>
+    if (question === null || question === undefined) {
+      return null
     }
 
     const answered = (question.id in users[currentUser].answers)
@@ -70,8 +70,12 @@ class QuestionDetail extends Component {
               <h4>Already answered question summary</h4>
               <h5>Option 1:  {question.optionOne.text}</h5>
               <h5>Votes: {votes1}, Percentage: {votes1/votes * 100}%</h5>
+              {users[currentUser].answers[question.id] === 'optionOne' &&
+                <h5>You chose option 1</h5>}
               <h5>Option 2:  {question.optionTwo.text}</h5>
               <h5>Votes: {votes2}, Percentage: {votes2/votes * 100}%</h5>
+              {users[currentUser].answers[question.id] === 'optionTwo' &&
+                <h5>You chose option 2</h5>}
             </div>
           }
         </div>

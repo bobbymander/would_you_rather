@@ -3,20 +3,57 @@ import { connect } from 'react-redux'
 import QuestionSummary from './QuestionSummary'
 
 class Questions extends Component {
+  componentDidMount() {
+    document.getElementById("defaultOpen").click()
+  }
+
+  openTab(evt, tabName) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+
   render() {
     const { answered, unanswered } = this.props
 
-    console.log('home: ', answered, unanswered)
     return (
       <div>
-        <h3 className='center'>Questions Unanswered</h3>
-        {unanswered.map((entry) => (
-          <QuestionSummary key={entry[1].id} id={entry[1].id} />
-        ))}
-        <h3 className='center'>Questions Answered</h3>
-        {answered.map((entry) => (
-          <QuestionSummary key={entry[1].id} id={entry[1].id} />
-        ))}
+        <div className="tab">
+          <button className="tablinks"
+            onClick={e => this.openTab(e, 'Unanswered')}
+            id='defaultOpen'>
+            Unanswered
+          </button>
+          <button className="tablinks" onClick={e => this.openTab(e, 'Answered')}>
+            Answered
+          </button>
+        </div>
+        <div id="Unanswered" className="tabcontent">
+          {unanswered.map((entry) => (
+            <QuestionSummary key={entry[1].id} id={entry[1].id} />
+          ))}
+        </div>
+        <div id="Answered" className="tabcontent">
+          {answered.map((entry) => (
+            <QuestionSummary key={entry[1].id} id={entry[1].id} />
+          ))}
+        </div>
+
       </div>
     )
   }
