@@ -32,15 +32,19 @@ class AnswerQuestion extends Component {
   }
 
   render() {
-    const { question, question_id } = this.props
+    const { users, currentUser, question } = this.props
 
     if (question === null) {
       return <p>This question doesn't exist</p>
     }
 
-    console.log('answer: ', question, question_id)
     return (
       <form onSubmit={this.handleSubmit}>
+        <img
+          src={`.${users[currentUser].avatarURL}`}
+          alt={`Avatar of ${currentUser}`}
+          className='avatar'
+        />
         <h3>Would you rather?</h3>
         <label>
           <input type='radio' id='one' name='options' value='optionOne'
@@ -58,10 +62,11 @@ class AnswerQuestion extends Component {
   }
 }
 
-function mapStateToProps ({questions, currentUser}, ownProps) {
+function mapStateToProps ({users, questions, currentUser}, ownProps) {
   console.log('own: ', ownProps, questions)
   return {
     currentUser,
+    users,
     question: questions[ownProps.match.params.question_id],
     question_id: ownProps.match.params.question_id
   }

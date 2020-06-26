@@ -50,7 +50,6 @@ export function handleQuestionAnswer(authedUser, qid, answer) {
         dispatch(receiveUsers(users))
         dispatch(receiveQuestions(questions))
         dispatch(hideLoading())
-        console.log('dispatch: ', users, questions)
       })
   }
 }

@@ -40,7 +40,6 @@ export function handleAddQuestion(optionOneText, optionTwoText, currentUser) {
   return (dispatch, getState) => {
     dispatch(showLoading())
 
-    console.log('handle:', optionOneText, optionTwoText, currentUser)
     return _saveQuestion({
       optionOneText,
       optionTwoText,
