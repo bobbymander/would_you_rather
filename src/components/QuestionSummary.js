@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-class Question extends Component {
+class QuestionSummary extends Component {
   render() {
     const { users, question, id } = this.props
 
@@ -42,4 +42,4 @@ function mapStateToProps ({users, questions}, {id}) {
   }
 }
 
-export default connect(mapStateToProps)(Question)
+export default connect(mapStateToProps)(QuestionSummary)

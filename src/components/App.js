@@ -8,7 +8,7 @@ import Login from './Login'
 import Questions from './Questions'
 import AddQuestion from './AddQuestion'
 import Leaderboard from './Leaderboard'
-import AnswerQuestion from './AnswerQuestion'
+import QuestionDetail from './QuestionDetail'
 import Logout from './Logout'
 
 class App extends Component {
@@ -35,7 +35,7 @@ class App extends Component {
                 <Route path='/' exact component={Questions} />
                 <Route path='/add' component={AddQuestion} />
                 <Route path='/leaderboard' component={Leaderboard} />
-                <Route path='/questions/:question_id' component={AnswerQuestion} />
+                <Route path='/questions/:question_id' component={QuestionDetail} />
                 <Route path='/logout' component={Logout} />
               </div>
             }
