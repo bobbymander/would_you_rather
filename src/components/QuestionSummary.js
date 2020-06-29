@@ -15,7 +15,6 @@ class QuestionSummary extends Component {
     const url = Object.entries(users).filter(user => user[0] === userId)[0][1].avatarURL
 
     return (
-      <Link to={`/questions/${id}`} className='question'>
         <div>
           <img
             src={url}
@@ -23,13 +22,14 @@ class QuestionSummary extends Component {
             className='avatar'
           />
           <span>{question[0][1].author}</span>
+          <Link to={`/questions/${id}`} className='question'>
           <h5 className='center'>Would you rather?</h5>
           <ul>
             <li key={`${question[0][0]}op1`}>{question[0][1].optionOne.text}</li>
             <li key={`${question[0][0]}op2`}>{question[0][1].optionTwo.text}</li>
          </ul>
+         </Link>
         </div>
-      </Link>
     )
   }
 }

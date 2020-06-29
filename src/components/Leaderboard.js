@@ -1,26 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import UserSummary from './UserSummary'
 
 class Leaderboard extends Component {
   render() {
     const { leaderboard } = this.props
 
-    console.log(leaderboard)
     return (
       <div>
         <h3 className='center'>Leaderboard</h3>
           {leaderboard.map((entry) => (
-            <ul key={entry.id}>
-              <li key={entry.id}>{entry.id}
-                <ul>
-                  <li key={`${entry.id}name`}>{entry['name']}</li>
-                  <li key={`${entry.id}url`}>{entry['avatarURL']}</li>
-                  <li key={`${entry.id}asked`}>Asked: {entry['numAsked']}</li>
-                  <li key={`${entry.id}answered`}>Answered: {entry['numAnswered']}</li>
-                  <li key={`${entry.id}total`}>Total: {entry['total']}</li>
-                </ul>
-              </li>
-            </ul>
+            <UserSummary entry={entry} />
           ))}
       </div>
     )

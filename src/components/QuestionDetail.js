@@ -42,6 +42,8 @@ class QuestionDetail extends Component {
     const votes1 = question.optionOne.votes.length
     const votes2 = question.optionTwo.votes.length
     const votes = votes1 + votes2
+    const votes1px = votes1/votes * 500 + 100
+    const votes2px = votes2/votes * 500 + 100
 
     return (
       <div>
@@ -67,15 +69,29 @@ class QuestionDetail extends Component {
           </form>}
           {answered &&
             <div>
-              <h4>Already answered question summary</h4>
-              <h5>Option 1:  {question.optionOne.text}</h5>
-              <h5>Votes: {votes1}, Percentage: {votes1/votes * 100}%</h5>
-              {users[currentUser].answers[question.id] === 'optionOne' &&
-                <h5>You chose option 1</h5>}
-              <h5>Option 2:  {question.optionTwo.text}</h5>
-              <h5>Votes: {votes2}, Percentage: {votes2/votes * 100}%</h5>
-              {users[currentUser].answers[question.id] === 'optionTwo' &&
-                <h5>You chose option 2</h5>}
+              <h4>Votes Summary</h4>
+              <table>
+                <tr>
+                  <td>{question.optionOne.text}</td>
+                  <td>
+                    <div style={{'background-color':'blue', 'width':`200px`}}>
+                      {votes1} votes, {votes1/votes * 100}%
+                      {users[currentUser].answers[question.id] === 'optionOne' &&
+                        <span>    Your choice</span>}
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>{question.optionTwo.text}</td>
+                  <td>
+                    <div style={{'background-color':'green', 'width':`200px`}}>
+                      {votes2} votes, {votes2/votes * 100}%
+                      {users[currentUser].answers[question.id] === 'optionTwo' &&
+                        <span>    Your choice</span>}
+                    </div>
+                  </td>
+                </tr>
+              </table>
             </div>
           }
         </div>

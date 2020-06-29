@@ -13,7 +13,7 @@ class AddQuestion extends Component {
     const optionOneText = e.target.value
 
     this.setState(() => ({
-      optionOneText 
+      optionOneText
     }))
   }
 
@@ -45,22 +45,24 @@ class AddQuestion extends Component {
 
     return (
       <div>
-        <h3 className='center'>Please enter your question below.</h3>
+        <h3 className='center'>Would you rather?</h3>
         <form className='add-question' onSubmit={this.handleSubmit}>
           <textarea
             placeholder="Option 1"
             value={optionOneText}
             onChange={this.handleChangeOne}
             className='textarea'
-            maxLength={280}
           />
+          <br/>
+          or
+          <br/>
           <textarea
             placeholder="Option 2"
             value={optionTwoText}
             onChange={this.handleChangeTwo}
             className='textarea'
-            maxLength={280}
           />
+          <br/>
           <button
             className='btn'
             type='submit'

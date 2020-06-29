@@ -32,6 +32,8 @@ class Login extends Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <label>Please Login
+          <br/>
+          <br/>
             <select required value={selectedUser} onChange={this.handleChange}>
               <option disabled hidden defaultValue=''></option>
               {Object.entries(users).map((user) => (
@@ -39,6 +41,8 @@ class Login extends Component {
               ))}
             </select>
           </label>
+          <br/>
+          <br/>
           <input type='submit' value='Submit' />
         </form>
       </div>
