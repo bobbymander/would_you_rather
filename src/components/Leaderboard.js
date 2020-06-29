@@ -10,7 +10,7 @@ class Leaderboard extends Component {
       <div>
         <h3 className='center'>Leaderboard</h3>
           {leaderboard.map((entry) => (
-            <UserSummary entry={entry} />
+            <UserSummary key={entry.id} entry={entry} />
           ))}
       </div>
     )

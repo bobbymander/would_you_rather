@@ -71,10 +71,11 @@ class QuestionDetail extends Component {
             <div>
               <h4>Votes Summary</h4>
               <table>
+                <tbody>
                 <tr>
                   <td>{question.optionOne.text}</td>
                   <td>
-                    <div style={{'background-color':'blue', 'width':`200px`}}>
+                    <div style={{'backgroundColor':'blue', 'width':`200px`}}>
                       {votes1} votes, {votes1/votes * 100}%
                       {users[currentUser].answers[question.id] === 'optionOne' &&
                         <span>    Your choice</span>}
@@ -84,13 +85,14 @@ class QuestionDetail extends Component {
                 <tr>
                   <td>{question.optionTwo.text}</td>
                   <td>
-                    <div style={{'background-color':'green', 'width':`200px`}}>
+                    <div style={{'backgroundColor':'green', 'width':`200px`}}>
                       {votes2} votes, {votes2/votes * 100}%
                       {users[currentUser].answers[question.id] === 'optionTwo' &&
                         <span>    Your choice</span>}
                     </div>
                   </td>
                 </tr>
+                </tbody>
               </table>
             </div>
           }
