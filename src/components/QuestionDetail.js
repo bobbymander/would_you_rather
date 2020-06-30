@@ -35,15 +35,13 @@ class QuestionDetail extends Component {
     const { users, currentUser, question } = this.props
 
     if (question === null || question === undefined) {
-      return null
+      return (<div>404 Not found </div>)
     }
 
     const answered = (question.id in users[currentUser].answers)
     const votes1 = question.optionOne.votes.length
     const votes2 = question.optionTwo.votes.length
     const votes = votes1 + votes2
-    const votes1px = votes1/votes * 500 + 100
-    const votes2px = votes2/votes * 500 + 100
 
     return (
       <div>
